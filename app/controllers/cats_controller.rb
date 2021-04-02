@@ -6,10 +6,10 @@ class CatsController < ApplicationController
      def create
         cat = Cat.create(cat_params)
         render json: cat
-end
+     end
 
-private
-  def cat_params
-    params.require(:cat).permit(:name, :age, :enjoys)
-  end
+    private
+    def cat_params
+        params.require(:cat).permit(:name, :age, :enjoys)
+    end
 end
