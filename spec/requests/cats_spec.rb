@@ -54,6 +54,34 @@ RSpec.describe "Cats", type: :request do
       expect(error_response['name']).to include "can't be blank"
       expect(response).to have_http_status(422)
     end
+    it "cannot create a new cat without a age" do
+      cat_params = {
+        cat: {
+          name: 'Catty', 
+          enjoys: "catching fish"
+        }
+      }
+
+      post '/cats', params: cat_params
+
+      error_response = JSON.parse(response.body)
+      expect(error_response['age']).to include "can't be blank"
+      expect(response).to have_http_status(422)
+    end
+    it "cannot create a new cat without an enjoys description" do
+      cat_params = {
+        cat: {
+          name: 'Catty', 
+          age: 5
+        }
+      }
+
+      post '/cats', params: cat_params
+
+      error_response = JSON.parse(response.body)
+      expect(error_response['enjoys']).to include "can't be blank"
+      expect(response).to have_http_status(422)
+    end
   end
 end
 
