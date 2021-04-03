@@ -43,6 +43,7 @@ RSpec.describe "Cats", type: :request do
       expect(cat_response['name']).to eq 'Sylvester'
       expect(cat_response['age']).to eq 50
       expect(cat_response['enjoys']).to eq 'trying to have a tweetie sandwitch'
+      expect(response).to have_http_status(200)
     end 
 
     it "cannot create a new cat without a name" do
@@ -115,6 +116,7 @@ RSpec.describe "Cats", type: :request do
       expect(update_cat_response['name']).to eq 'Sylvester'
       expect(update_cat_response['age']).to eq 50
       expect(update_cat_response['enjoys']).to eq 'trying to have a tweetie sandwitch'
+      expect(response).to have_http_status(200)
     end 
   end
 
